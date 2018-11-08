@@ -9,9 +9,9 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const UserBlocked = new Set();
-const prefix = '!'
+const prefix = '*'
 
-client.on('ready', () => {
+ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
  
@@ -27,69 +27,53 @@ client.on('ready', () => {
 client.user.setStatus("online")
  
 });
-
 //كود تغير البلاينج او التويتش
 
-const adminprefix = "!";//تذكير نغير البرفكس
-const devs = ['427054141492297728','423396068789714945'];//zمهم نحط الايدي
+const adminprefix = "*";//تذكير نغير البرفكس
+const devs = ['427054141492297728','502761044796768256'];//zمهم نحط الايدي
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' '); //حقوق GMZN Host
     if (!devs.includes(message.author.id)) return;
    
-if (message.content.startsWith(adminprefix + 'plyy')) { //حقوق GMZN Host
+if (message.content.startsWith(adminprefix + 'ply')) { //حقوق GMZN Host
   client.user.setGame(argresult);
     message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`) //حقوق GMZN Host
 } else
  
-if (message.content.startsWith(adminprefix + 'tww')) {
+if (message.content.startsWith(adminprefix + 'tw')) {
   client.user.setGame(argresult, "https://www.twitch.tv/idk");
     message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`) //حقوق GMZN Host
 }
 });
 
-//كود الدعوه
-
-client.on('message' , message => {
+//-------------------------------------------------------------نهاية السورس الاساسي--------------------------------------------------------------------------------------------------------------
  
-    if (message.content === "!inv") {
-        message.reply(`تم ارساله الرابط في الخاص`)
-        if(!message.channel.guild) return message.reply('**الآمر فقط في السيرفرات**');
-     const embed = new Discord.RichEmbed()
- .setColor("RANDOM")
- .setThumbnail(client.user.avatarURL)    
- .setDescription("Add me" + `
- **
-رابط البوت |
-http://cutt.us/mdcmusicinviet
- **
-`);
-  message.author.sendEmbed(embed);
-   }
-});
-
-//كود الهيلب
 
 client.on("message", message => {
   var prefix = "*";
-if (message.content === "!mhelp") {
+if (message.content === "*mhelp") {
    message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
 const embed = new Discord.RichEmbed()
     .setDescription(`
-** !inv ~ لدعوة البوت لسيرفرك**
    [❖═══════ اوامر اغاني═══════❖]
-** !p ~ لتشغيل الاغنيه**
-** !stop ~ لأيقاف الاغنيه**
-** !s ~ لتخطي الاغنيه**
-** !vol <namber> ~ ل تعلية واخفاض صوت الاغنيه**
-** !pause ~ لأيقاف الاغنيه موقتا**
-** !res ~ لأستمرار الاغنيه**
+
+** *play ~ لتشغيل الاغنيه**
+
+** *stop ~ لأيقاف الاغنيه**
+
+** *skip ~ لتخطي الاغنيه**
+
+** *vol <namber> ~ ل تعلية واخفاض صوت الاغنيه**
+
+** *pause ~ لأيقاف الاغنيه موقتا**
+
+** *resume ~ لأستمرار الاغنيه**
 `)
  message.author.sendEmbed(embed)
  
  }
  });
 
-//كود الميوزك
 
 //--------------------------------------------------------
 
@@ -146,7 +130,7 @@ client.on('message', async msg => {
     const serverQueue = queue.get(msg.guild.id);
     let command = msg.content.toLowerCase().split(" ")[0];
     command = command.slice(prefix.length)
-    if (command === `p`) {
+    if (command === `play`) {
         const voiceChannel = msg.member.voiceChannel;
         if (!voiceChannel) return msg.channel.send('يجب تواجدك بروم صوتي | :x:');
         const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -209,7 +193,7 @@ ${videos.map(video2 => `[**${++index}**] **${video2.title}**`).join('\n')}`)
  
             return handleVideo(video, msg, voiceChannel);
         }
-    } else if (command === `s`) {
+    } else if (command === `skip`) {
         if (!msg.member.voiceChannel) return msg.channel.send('يجب تواجدك بروم صوتي | :x:');
         if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
         serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
@@ -254,7 +238,7 @@ ${serverQueue.songs.map(song => `**${++index} -** ${song.title}`).join('\n')}
             return msg.channel.send('تم إيقاف الموسيقى مؤقتا!');
         }
         return msg.channel.send('لا يوجد شيء حالي ف العمل.');
-    } else if (command === "res") {
+    } else if (command === "resume") {
         if (serverQueue && !serverQueue.playing) {
             serverQueue.playing = true;
             serverQueue.connection.dispatcher.resume();
@@ -428,5 +412,24 @@ function play(guild, song) {
 }
 });
 
+//كود الانفيت
+
+client.on('message' , message => {
+ 
+    if (message.content === "*minv") {
+        message.reply(`تم ارساله الرابط في الخاص`)
+        if(!message.channel.guild) return message.reply('**الآمر فقط في السيرفرات**');
+     const embed = new Discord.RichEmbed()
+ .setColor("RANDOM")
+ .setThumbnail(client.user.avatarURL)    
+ .setDescription("دعوة اضافة البوت" + `
+ **
+رابط البوت |
+http://cutt.us/GMZNMusic
+ **
+`);
+  message.author.sendEmbed(embed);
+   }
+});
 
 client.login(process.env.BOT_TOKEN);
