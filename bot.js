@@ -9,7 +9,7 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const UserBlocked = new Set();
-const prefix = 'AB'
+const prefix = '!'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -30,8 +30,8 @@ client.user.setStatus("online")
 
 //كود تغير البلاينج او التويتش
 
-const adminprefix = "AB";//تذكير نغير البرفكس
-const devs = ['502761044796768256','427054141492297728'];//zمهم نحط الايدي
+const adminprefix = "!";//تذكير نغير البرفكس
+const devs = ['427054141492297728','423396068789714945'];//zمهم نحط الايدي
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' '); //حقوق GMZN Host
     if (!devs.includes(message.author.id)) return;
@@ -51,7 +51,7 @@ if (message.content.startsWith(adminprefix + 'tww')) {
 
 client.on('message' , message => {
  
-    if (message.content === "!ABinv") {
+    if (message.content === "!inv") {
         message.reply(`تم ارساله الرابط في الخاص`)
         if(!message.channel.guild) return message.reply('**الآمر فقط في السيرفرات**');
      const embed = new Discord.RichEmbed()
@@ -71,18 +71,18 @@ http://cutt.us/mdcmusicinviet
 
 client.on("message", message => {
   var prefix = "*";
-if (message.content === "ABhelp") {
+if (message.content === "!mhelp") {
    message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
 const embed = new Discord.RichEmbed()
     .setDescription(`
 ** !inv ~ لدعوة البوت لسيرفرك**
    [❖═══════ اوامر اغاني═══════❖]
-** ABplay ~ لتشغيل الاغنيه**
-** ABstop ~ لأيقاف الاغنيه**
-** ABskip ~ لتخطي الاغنيه**
-** ABvol <namber> ~ ل تعلية واخفاض صوت الاغنيه**
-** ABpause ~ لأيقاف الاغنيه موقتا**
-** ABres ~ لأستمرار الاغنيه**
+** !p ~ لتشغيل الاغنيه**
+** !stop ~ لأيقاف الاغنيه**
+** !s ~ لتخطي الاغنيه**
+** !vol <namber> ~ ل تعلية واخفاض صوت الاغنيه**
+** !pause ~ لأيقاف الاغنيه موقتا**
+** !res ~ لأستمرار الاغنيه**
 `)
  message.author.sendEmbed(embed)
  
@@ -146,7 +146,7 @@ client.on('message', async msg => {
     const serverQueue = queue.get(msg.guild.id);
     let command = msg.content.toLowerCase().split(" ")[0];
     command = command.slice(prefix.length)
-    if (command === `play`) {
+    if (command === `p`) {
         const voiceChannel = msg.member.voiceChannel;
         if (!voiceChannel) return msg.channel.send('يجب تواجدك بروم صوتي | :x:');
         const permissions = voiceChannel.permissionsFor(msg.client.user);
@@ -209,7 +209,7 @@ ${videos.map(video2 => `[**${++index}**] **${video2.title}**`).join('\n')}`)
  
             return handleVideo(video, msg, voiceChannel);
         }
-    } else if (command === `skip`) {
+    } else if (command === `s`) {
         if (!msg.member.voiceChannel) return msg.channel.send('يجب تواجدك بروم صوتي | :x:');
         if (!serverQueue) return msg.channel.send('لا يتوفر مقطع لتجآوزه');
         serverQueue.connection.dispatcher.end('تم تجآوز هذآ المقطع');
