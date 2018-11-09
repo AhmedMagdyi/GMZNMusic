@@ -13,7 +13,7 @@ const prefix = '*'
 
  client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setGame(`Say  *mhelp || *minv`, )
+  client.user.setGame(`Say : *mhelp || *minv`, )
 });
  
  
