@@ -9,7 +9,7 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const UserBlocked = new Set();
-const prefix = '*'
+const prefix = '!'
 
  client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -29,7 +29,7 @@ client.user.setStatus("online")
 });
 //كود تغير البلاينج او التويتش
 
-const adminprefix = "*";//تذكير نغير البرفكس
+const adminprefix = "!";//تذكير نغير البرفكس
 const devs = ['460375912303689738','427054141492297728'];//zمهم نحط الايدي
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' '); //حقوق GMZN Host
