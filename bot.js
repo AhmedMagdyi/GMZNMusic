@@ -30,7 +30,7 @@ client.user.setStatus("online")
 //كود تغير البلاينج او التويتش
 
 const adminprefix = "*";//تذكير نغير البرفكس
-const devs = ['427054141492297728','502761044796768256'];//zمهم نحط الايدي
+const devs = ['460375912303689738','427054141492297728'];//zمهم نحط الايدي
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' '); //حقوق GMZN Host
     if (!devs.includes(message.author.id)) return;
@@ -50,24 +50,24 @@ if (message.content.startsWith(adminprefix + 'tw')) {
  
 
 client.on("message", message => {
-  var prefix = "*";
-if (message.content === "*mhelp") {
+  var prefix = "!";
+if (message.content === "!help") {
    message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
 const embed = new Discord.RichEmbed()
     .setDescription(`
    [❖═══════ اوامر اغاني═══════❖]
 
-** *play ~ لتشغيل الاغنيه**
+** !play ~ لتشغيل الاغنيه**
 
-** *stop ~ لأيقاف الاغنيه**
+** !stop ~ لأيقاف الاغنيه**
 
-** *skip ~ لتخطي الاغنيه**
+** !skip ~ لتخطي الاغنيه**
 
-** *vol <namber> ~ ل تعلية واخفاض صوت الاغنيه**
+** !vol <namber> ~ ل تعلية واخفاض صوت الاغنيه**
 
-** *pause ~ لأيقاف الاغنيه موقتا**
+** !pause ~ لأيقاف الاغنيه موقتا**
 
-** *resume ~ لأستمرار الاغنيه**
+** !resume ~ لأستمرار الاغنيه**
 `)
  message.author.sendEmbed(embed)
  
