@@ -68,6 +68,9 @@ const embed = new Discord.RichEmbed()
 ** *pause ~ لأيقاف الاغنيه موقتا**
 
 ** *resume ~ لأستمرار الاغنيه**
+
+تاريخ انتهاء صلاحية البوت : 26/12/2018
+Copyright © GMZN Host
 `)
  message.author.sendEmbed(embed)
  
