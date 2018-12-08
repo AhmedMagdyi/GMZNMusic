@@ -412,11 +412,5 @@ function play(guild, song) {
 }
 });
 
-//كود الانفيت
-
-`);
-  message.author.sendEmbed(embed);
-   }
-});
 
 client.login(process.env.BOT_TOKEN);
